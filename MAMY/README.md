@@ -16,7 +16,7 @@
     cd Backend
     Node app
 
- # To Login:
+ # To Login as an admin:
  ### Username:
     Admin
  ### Password :
@@ -30,6 +30,25 @@
 
 ## The Edit Funcionality:
     The Edit function needs to enter all the new data in the form given to be updated.
+
+# As a User u can either login as an existing user or as a Geust user or sign up 
+    The login homepage contains the above three options
+
+## User Searching Available Flights
+    The user can search for a flight using the given input form and then choose the departure flight and then choose the return flight
+
+## Choosing Seats
+    After choosing the flights a user can choose the seats wanted
+
+## Editing user Info
+    A user can edit his information
+
+## Reservations List
+    A user can view all flights reserved and can also choose to cancel a specific flight
+
+
+
+
 
 # Note
   We have started so late as we thought that the deadline was on 24/11/2021 so every one did his part and 

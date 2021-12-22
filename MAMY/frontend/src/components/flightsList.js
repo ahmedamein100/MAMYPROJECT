@@ -9,26 +9,11 @@ import { positions, Provider } from "react-alert";
 import Promt from './Promt';
 
 
-
-// const AlertTemplate = ({ style, options, message, close, props }) => (
-//   <div style={style}>
-//     {options.type === 'info' }
-//     {options.type === 'success' && ':)'}
-//     {options.type === 'error' && ':('}
-//     {message}
-//     <br></br>
-//     <button onClick={close}> No </button>
-//     <button onClick={props.deleteFlights(props.flights._id)}> Yes </button>
-    
-//   </div>
-// )
-
-
 const Flights = props => (
   
   <tr>
-    <td>{props.flights.To}</td>
     <td>{props.flights.From}</td>
+    <td>{props.flights.To}</td>
     <td>{props.flights.Date.substring(0,10)}</td>
     <td>{props.flights.Economy}</td>
     <td>{props.flights.Business}</td>
@@ -73,9 +58,6 @@ export default class flightsList extends Component {
       })
   }
 
-
- 
-
   deleteFlights(id) {
 
     axios.delete('http://localhost:5000/AdminHome/'+id)
@@ -98,23 +80,34 @@ export default class flightsList extends Component {
  
 
   render() {
-    
-
+  
     return (
 
-
-
       <div>
+        <div className="container">
+        <nav className="navbar navbar-dark bg-dark navbar-expand-lg">
+        <Link to="/AdminHomePage" className="navbar-brand">FSR</Link>
+        <div className="collpase navbar-collapse">
+        <ul className="navbar-nav mr-auto">
+          <li className="navbar-item">
+          <Link to="/AdminHomePage/flightsList" className="nav-link">Show all available flights</Link>
+          </li>
+          <li><Link to="/AdminHomePage/Addflight" className="nav-link">Add Flight</Link></li>
+          <li><Link to="/AdminHomePage/search" className="nav-link">Search</Link></li>
+        </ul>
+        </div>
+      </nav>
+      </div>
+      
+        
+
+
+        <table className="table container">
         <h3>Flights Available</h3>
-
-
-
-
-        <table className="table">
           <thead className="thead-light">
             <tr>
+            <th>From</th>
               <th>To</th>
-              <th>From</th>
               <th>Date</th>
               <th>Economy</th>
               <th>Business</th>

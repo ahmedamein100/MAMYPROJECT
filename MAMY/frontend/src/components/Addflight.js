@@ -3,6 +3,7 @@ import axios from 'axios';
 import DatePicker from 'react-datepicker';
 import "react-datepicker/dist/react-datepicker.css";
 import DateTimePicker from 'react-datetime-picker';
+import { Link } from 'react-router-dom';
 
 
 export default class Addflight extends Component {
@@ -18,7 +19,7 @@ export default class Addflight extends Component {
     this.onChangeBusiness = this.onChangeBusiness.bind(this);
     this.onChangeDate = this.onChangeDate.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
-
+   
     this.state = {
       From: '',
       To: '',
@@ -104,6 +105,23 @@ export default class Addflight extends Component {
 
   render() {
     return (
+      <div>
+        
+        <div className="container">
+        <nav className="navbar navbar-dark bg-dark navbar-expand-lg">
+        <Link to="/AdminHomePage" className="navbar-brand">FSR</Link>
+        <div className="collpase navbar-collapse">
+        <ul className="navbar-nav mr-auto">
+          <li className="navbar-item">
+          <Link to="/AdminHomePage/flightsList" className="nav-link">Show all available flights</Link>
+          </li>
+          <li><Link to="/AdminHomePage/Addflight" className="nav-link">Add Flight</Link></li>
+          <li><Link to="/AdminHomePage/search" className="nav-link">Search</Link></li>
+        </ul>
+        </div>
+      </nav>
+      </div>
+
     <div className="container">
       <h3>Create New Flight Log</h3>
       <form onSubmit={this.onSubmit}>
@@ -180,6 +198,7 @@ export default class Addflight extends Component {
           <input type="submit" value="Add fligt" className="btn btn-primary" />
         </div>
       </form>
+    </div>
     </div>
     )
   }

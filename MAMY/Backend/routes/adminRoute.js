@@ -9,7 +9,9 @@ let Flight = require('../models/flight');
     router.get('/',function(req,res) {
         res.send("hi admin");
     })
-        router.post('/EditFlight/:id',function(req,res) {
+
+    
+   router.post('/EditFlight/:id',function(req,res) {
 
             Flight.findById(req.body._ID)
     .then(currflight => {
@@ -32,9 +34,37 @@ let Flight = require('../models/flight');
              
                 })
 
-        router.post('/add-flight',function(req,res) {
+
+                
+    router.post('/add-flight',function(req,res) {
         //    console.log("hi");
-            const newfligt = new Flight({From:req.body.From,To:req.body.To,Date: req.body.Date,Economy:req.body.Economy,Business:req.body.Business,First:req.body.First,Arrival:req.body.Arrival,Departure:req.body.Departure});
+
+        var x = []
+        var y = []
+        var z = []
+        
+        var counter = 0;
+        while(counter<req.body.Economy)
+        {x[counter] = true;
+          counter ++;
+        
+        }
+        counter = 0;
+        while(counter<req.body.Business)
+        {y[counter] = true;
+          counter ++;
+        
+        }
+        counter = 0;
+        while(counter<req.body.First)
+        {z[counter] = true;
+          counter ++;
+        
+        }
+        
+
+            const newfligt = new Flight({BusinessSeats:y,EconomySeats:x,FirstSeats:z,From:req.body.From,To:req.body.To,Date: req.body.Date,Economy:req.body.Economy,Business:req.body.Business,First:req.body.First,Arrival:req.body.Arrival,Departure:req.body.Departure});
+            console.log(newfligt);
             newfligt.save(function (err, book) {
                 if (err) return console.error(err);
                 console.log(newfligt.From);
@@ -54,14 +84,14 @@ let Flight = require('../models/flight');
           });
 
 
-          router.get('/:id',function(req,res) {
+    router.get('/:id',function(req,res) {
               console.log("hi");
             Flight.findById(req.params.id)
             .then(flights => res.send(flights))
             .catch(err => res.status(400).json('Error: ' + err));
             })
 
-            router.post('/allFlights',function(req,res) {
+    router.post('/allFlights',function(req,res) {
                 const newfligt = new Flight({From:req.body.From,To:req.body.To,Date: req.body.Date,Economy:req.body.Economy,Business:req.body.Business,First:req.body.First,Arrival:req.body.Arrival,Departure:req.body.Departure});
             newfligt.save(function (err, book) {
                 if (err) return console.error(err);
@@ -69,7 +99,7 @@ let Flight = require('../models/flight');
               });
                 })
 
-                router.post('/searchFlights',function(req,res) {
+     router.post('/searchFlights',function(req,res) {
                     var numberoftrue = 0
                     const BDeparture= Boolean(req.body.Departure !== null)
                     if(BDeparture)
@@ -155,6 +185,23 @@ let Flight = require('../models/flight');
 
                    
                     })
+
+
+
+
+
+    router.get('/EditFlight/:id',function(req,res) {
+                      Flight.findById(req.params.id)
+                      .then(flights => res.send(flights))
+                      .catch(err => res.status(400).json('Error: ' + err));
+                      
+                     })
+
+
+
+
+
+
 
 
 

@@ -189,8 +189,23 @@ export default class search extends Component {
 
   render() {
     return (
-      
-     
+      <div>
+        
+        <div className="container">
+        <nav className="navbar navbar-dark bg-dark navbar-expand-lg">
+        <Link to="/AdminHomePage" className="navbar-brand">FSR</Link>
+        <div className="collpase navbar-collapse">
+        <ul className="navbar-nav mr-auto">
+          <li className="navbar-item">
+          <Link to="/AdminHomePage/flightsList" className="nav-link">Show all available flights</Link>
+          </li>
+          <li><Link to="/AdminHomePage/Addflight" className="nav-link">Add Flight</Link></li>
+          <li><Link to="/AdminHomePage/search" className="nav-link">Search</Link></li>
+        </ul>
+        </div>
+      </nav>
+      </div>
+
       <div className="container">
       <h3>Search Flight</h3>
       <form onSubmit={this.onSubmit}>
@@ -296,7 +311,7 @@ export default class search extends Component {
       </table>
       </div>
     </div>
-
+</div>
       
 
 

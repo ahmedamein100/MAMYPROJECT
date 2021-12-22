@@ -4,35 +4,13 @@ import { useParams } from 'react-router';
 //import { withRouter } from "react-router-dom";
 import DatePicker from 'react-datepicker';
 import "react-datepicker/dist/react-datepicker.css";
-
+import { Link } from 'react-router-dom';
 import DateTimePicker from 'react-datetime-picker';
-
-// const Flights = props => (
-//   <tr>
-//     <td>{props.flights.To}</td>
-//     <td>{props.flights.From}</td>
-//     <td>{props.flights.Date.substring(0,10)}</td>
-//     <td>{props.flights.Economy}</td>
-//     <td>{props.flights.Business}</td>
-//     <td>{props.flights.First}</td>
-//     <td>{props.flights.Arrival.substring(0,10)}</td>
-//     <td>{props.flights.Arrival.substring(11,16)}</td>
-//     <td>{props.flights.Departure.substring(0,10)}</td>
-//     <td>{props.flights.Departure.substring(11,16)}</td>
-//     <td>
-//       <Link to={"/AdminHomePage/edit/"+props.flights._id}>edit</Link> | <a href="#" onClick={() => { props.deleteFlights(props.flights._id) }}>delete</a>
-//     </td>
-//   </tr>
-// )
 
 
 export default class EditFlight extends Component {
   constructor(props) {
     super(props);
-      
-       
-      
-      
     this.onChangeFrom = this.onChangeFrom.bind(this);
     this.onChangeTo = this.onChangeTo.bind(this);
     this.onChangeArrival = this.onChangeArrival.bind(this);
@@ -52,10 +30,10 @@ export default class EditFlight extends Component {
       Departure: null ,
       Economy:0 ,
       Business: 0,
-      First:0
-     
+      First:0,
+      flights:[]
     }
-
+    
   }
 
   componentDidMount() {
@@ -143,14 +121,14 @@ export default class EditFlight extends Component {
     e.preventDefault();
 
     const flight = {
-      From: this.state.From,
-          To: this.state.To,
-          Date: this.state.Date ,
-          Arrival: this.state.Arrival,
-          Departure: this.state.Departure,
-          Economy:this.state.Economy,
-          Business: this.state.Business,
-          First: this.state.First,
+      From: this.state.From || this.state.flights.From ,
+          To: this.state.To || this.state.flights.To,
+          Date: this.state.Date ||this.state.flights.Date ,
+          Arrival: this.state.Arrival || this.state.flights.Arrival,
+          Departure: this.state.Departure || this.state.flights.Departure,
+          Economy:this.state.Economy || this.state.flights.Economy,
+          Business: this.state.Business || this.state.flights.Business,
+          First: this.state.First || this.state.flights.First,
           _ID: window.location.pathname.substring(20)
     }
 
@@ -163,17 +141,46 @@ export default class EditFlight extends Component {
    window.location = '/AdminHomePage/flightsList';
   }
 
+
+  async componentDidMount() {
+    await axios.get('http://localhost:5000/AdminHome/EditFlight/' + window.location.pathname.substring(20))
+      .then(response => {
+        this.setState({ flights: response.data })
+        console.log(this.state.flights);
+      })
+      .catch((error) => {
+        console.log(error);
+      })
+  }
+
+
+
+
+
   render() {
     return (
       
-     
+     <div>
+       <div className="container">
+        <nav className="navbar navbar-dark bg-dark navbar-expand-lg">
+        <Link to="/AdminHomePage" className="navbar-brand">FSR</Link>
+        <div className="collpase navbar-collapse">
+        <ul className="navbar-nav mr-auto">
+          <li className="navbar-item">
+          <Link to="/AdminHomePage/flightsList" className="nav-link">Show all available flights</Link>
+          </li>
+          <li><Link to="/AdminHomePage/Addflight" className="nav-link">Add Flight</Link></li>
+          <li><Link to="/AdminHomePage/search" className="nav-link">Search</Link></li>
+        </ul>
+        </div>
+      </nav>
+      </div>
       <div className="container">
       <h3>Edit Flight</h3>
       <form onSubmit={this.onSubmit}>
         <div className="form-group"> 
           <label>From: </label>
           <input  type="text"
-              required
               className="form-control"
               value={this.state.From}
               onChange={this.onChangeFrom}
@@ -183,7 +190,6 @@ export default class EditFlight extends Component {
         <div className="form-group"> 
           <label>To :  </label>
           <input  type="text"
-              required
               className="form-control"
               value={this.state.To}
               onChange={this.onChangeTo}
@@ -244,6 +250,7 @@ export default class EditFlight extends Component {
           <input type="submit" value="Update Flight" className="btn btn-primary" />
         </div>
       </form>
+    </div>
     </div>
     )
   }

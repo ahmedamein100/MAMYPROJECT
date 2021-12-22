@@ -31,6 +31,12 @@ const FlightSchema = new Schema({
       First: {
         type: Number,
         required: true
+      },FirstSeats:{
+        type: Array
+      },EconomySeats:{
+        type: Array
+      },BusinessSeats:{
+        type: Array
       }
       
     },

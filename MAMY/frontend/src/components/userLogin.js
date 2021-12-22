@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import axios from "axios";
+import { Link } from 'react-router-dom';
 // import { response } from 'express';
-export default class Login extends Component {
+export default class userLogin extends Component {
   constructor(props) {
     super(props);
 
@@ -33,20 +34,31 @@ export default class Login extends Component {
 
     }
 
-//    console.log(user);
+    
 
-    axios.post('http://localhost:5000/Home/login', user)
-      .then( window.location="/AdminHomePage"
-        );
+    axios.post('http://localhost:5000/Home/UserLogin', user)
+    .then( 
+      response => {
+        
+       if(response.data._id!="null")
+        {
+          window.location="/UserHomePage/"+response.data._id
+        } 
 
+      })
+      .catch((error) => {
+        console.log(error);
+      });
     
   }
+
+ 
 
 
 
   render() {
     return (
-      <div>
+      <div className='container'>
         <h3>login</h3>
         <form onSubmit={this.onSubmit}>
           <div className="form-group"> 
@@ -70,6 +82,20 @@ export default class Login extends Component {
             <input type="submit" value="Login" className="btn btn-primary" />
           </div>
         </form>
+        <br></br>
+        <h6>or</h6>
+        <br></br>
+        
+         <Link to={{pathname:"/UserHomePage/"+"666666666666666666666666"}}><button type="button" class="btn btn-dark" >Continue as a Geust User</button></Link>
+
+
+        <br></br>
+        <h6>or</h6>
+        <br></br>
+        <Link to={{pathname : '/userSignUp' }} >
+            <button type="button" class="btn btn-dark">Signup</button>
+            </Link>
+
       </div>
     )
   }
