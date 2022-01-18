@@ -161,8 +161,8 @@ export default class EditFlight extends Component {
     return (
       
      <div>
-       <div className="container">
-        <nav className="navbar navbar-dark bg-dark navbar-expand-lg">
+       <div className=" ">
+        <nav className="navbar navColor navbar-dark navbar-expand-lg ">
         <Link to="/AdminHomePage" className="navbar-brand">FSR</Link>
         <div className="collpase navbar-collapse">
         <ul className="navbar-nav mr-auto">
@@ -171,6 +171,7 @@ export default class EditFlight extends Component {
           </li>
           <li><Link to="/AdminHomePage/Addflight" className="nav-link">Add Flight</Link></li>
           <li><Link to="/AdminHomePage/search" className="nav-link">Search</Link></li>
+          <li className='signoutPos'><Link to="/" className="nav-link">Sign out</Link></li>
         </ul>
         </div>
       </nav>
@@ -184,7 +185,6 @@ export default class EditFlight extends Component {
               className="form-control"
               value={this.state.From}
               onChange={this.onChangeFrom}
-              placeholder = {"hi"}
               />
         </div>
         <div className="form-group"> 
@@ -247,7 +247,7 @@ export default class EditFlight extends Component {
         </div>
 
         <div className="form-group">
-          <input type="submit" value="Update Flight" className="btn btn-primary" />
+          <input type="submit" value="Update Flight" className="btn GButton" />
         </div>
       </form>
     </div>

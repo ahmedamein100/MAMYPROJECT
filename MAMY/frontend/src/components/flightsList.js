@@ -75,17 +75,13 @@ export default class flightsList extends Component {
     })
   }
 
-  
-
- 
-
   render() {
   
     return (
 
       <div>
-        <div className="container">
-        <nav className="navbar navbar-dark bg-dark navbar-expand-lg">
+        <div className=" ">
+        <nav className="navbar navColor navbar-dark navbar-expand-lg ">
         <Link to="/AdminHomePage" className="navbar-brand">FSR</Link>
         <div className="collpase navbar-collapse">
         <ul className="navbar-nav mr-auto">
@@ -94,16 +90,17 @@ export default class flightsList extends Component {
           </li>
           <li><Link to="/AdminHomePage/Addflight" className="nav-link">Add Flight</Link></li>
           <li><Link to="/AdminHomePage/search" className="nav-link">Search</Link></li>
+          <li className='signoutPos'><Link to="/" className="nav-link">Sign out</Link></li>
         </ul>
         </div>
       </nav>
       </div>
       
         
-
-
+      <div className='container'>
+      <h3>Flights Available</h3>
         <table className="table container">
-        <h3>Flights Available</h3>
+        
           <thead className="thead-light">
             <tr>
             <th>From</th>
@@ -126,7 +123,7 @@ export default class flightsList extends Component {
         
 
       
-        
+        </div>
        
       </div>
     )

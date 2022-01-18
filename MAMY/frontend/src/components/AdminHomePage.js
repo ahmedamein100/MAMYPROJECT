@@ -9,8 +9,8 @@ export default class AdminHomePage extends Component {
 
   render() {
     return (
-        <div className="container">
-        <nav className="navbar navbar-dark bg-dark navbar-expand-lg">
+        <div className="">
+        <nav className="navbar navColor navbar-dark navbar-expand-lg ">
         <Link to="/AdminHomePage" className="navbar-brand">FSR</Link>
         <div className="collpase navbar-collapse">
         <ul className="navbar-nav mr-auto">
@@ -19,6 +19,7 @@ export default class AdminHomePage extends Component {
           </li>
           <li><Link to="/AdminHomePage/Addflight" className="nav-link">Add Flight</Link></li>
           <li><Link to="/AdminHomePage/search" className="nav-link">Search</Link></li>
+          <li className='signoutPos'><Link to="/" className="nav-link">Sign out</Link></li>
         </ul>
         </div>
       </nav>

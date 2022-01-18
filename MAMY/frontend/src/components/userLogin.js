@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import axios from "axios";
 import { Link } from 'react-router-dom';
 // import { response } from 'express';
+import plane from '../world.png'; 
 export default class userLogin extends Component {
   constructor(props) {
     super(props);
@@ -40,9 +41,15 @@ export default class userLogin extends Component {
     .then( 
       response => {
         
-       if(response.data._id!="null")
+       if(response.data._id!="null" )
         {
           window.location="/UserHomePage/"+response.data._id
+        }else{
+          
+            if (window.confirm("Please Enter a Valid Username/Password")) {
+              window.location="/userLogin"
+            }
+          
         } 
 
       })
@@ -53,15 +60,36 @@ export default class userLogin extends Component {
   }
 
  
+  getImage(){
 
+    return <img src={plane} width={400} height={400} alt="world" />;
+  }
 
 
   render() {
     return (
-      <div className='container'>
-        <h3>login</h3>
+      <div className=''>
+        {/* <div className='loginBackgroung2'></div> */}
+        <div className="LoginNav">
+          
+          <Link to={'/'}><button className='titleNav'>FSR</button></Link>
+          
+          <div >
+            <Link to={{pathname : '/login' }} >
+            <button type="button" className='loginButton2'>Admin Login</button>
+            </Link>
+          </div>
+          <div >
+            <Link to={{pathname : '/userLogin' }} >
+            <button type="button" className='loginButton'>User Login</button>
+            </Link>
+          </div>
+        </div>
+        
+        <div className='LoginBorder'></div>
+        <h3 className='titleLogin'>Login</h3>
         <form onSubmit={this.onSubmit}>
-          <div className="form-group"> 
+          <div className="form-group LoginUser"> 
             <label>Username: </label>
             <input  type="text"
                 required
@@ -79,23 +107,21 @@ export default class userLogin extends Component {
           </div>
           
           <div className="form-group">
-            <input type="submit" value="Login" className="btn btn-primary" />
+            <input type="submit" value="Login" className="btn btn-primary LoginUserButton" />
           </div>
         </form>
-        <br></br>
-        <h6>or</h6>
-        <br></br>
         
-         <Link to={{pathname:"/UserHomePage/"+"666666666666666666666666"}}><button type="button" class="btn btn-dark" >Continue as a Geust User</button></Link>
-
-
-        <br></br>
-        <h6>or</h6>
-        <br></br>
+        
+         <Link to={{pathname:"/UserHomePage/"+"666666666666666666666666"}}><button type="button" class="btn btn-dark LoginUserButton2"   >Continue as a Geust User</button></Link>
+        
         <Link to={{pathname : '/userSignUp' }} >
-            <button type="button" class="btn btn-dark">Signup</button>
+            <button type="button" class="btn btn-dark LoginUserButton3" >Signup</button>
             </Link>
-
+         <div className='mapImage'>  
+         <h3>Explore The World with US</h3>
+        {this.getImage()}
+        </div> 
+       
       </div>
     )
   }

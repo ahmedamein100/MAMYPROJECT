@@ -21,22 +21,13 @@ this.state = {
       lastName:'',
       user:[]
       }
+
+      if(window.location.pathname.substring(23)=="666666666666666666666666"){
+        alert("Please Sign In");
+        window.location="/UserHomePage/666666666666666666666666"
+      }
     }
     
-    //   async componentDidMount() {
-
-    //   }
-
-    // async componentDidMount() {
-    //   await axios.get('http://localhost:5000/UserHomePage/allReservations/' + window.location.pathname.substring(23))
-    //     .then(response => {
-    //     this.setState({ user: response.data })
-    //     // console.log(this.state.flights);
-    //   })
-    //   .catch((error) => {
-    //     console.log(error);
-    //   })
-    // }
     
     onChangelastname(e) {
         this.setState({
@@ -107,23 +98,23 @@ this.state = {
     render() {
         return (
             
-            <div className="container">
+            <div className=" ">
 
-      <nav className="navbar navbar-dark bg-dark navbar-expand-lg">
-        <Link to={"/UserHomePage/"+window.location.pathname.substring(23,46)} className="navbar-brand">FSR</Link>
+      <nav className="navbar navColor navbar-dark navbar-expand-lg ">
+        <Link to={"/UserHomePage/"+window.location.pathname.substring(23,47)} className="navbar-brand">FSR</Link>
         <div className="collpase navbar-collapse">
         <ul className="navbar-nav mr-auto">  
-          <li><Link to={"/UserHomePage/userSearch/"+window.location.pathname.substring(23,46)} className="nav-link">Search</Link></li>
-          <li><Link to={"/UserHomePage/reservationList/"+(window.location.pathname.substring(23,46))} className="nav-link">Reservations</Link></li>
-        <li><Link to={"/UserHomePage/editUser/"+(window.location.pathname.substring(23,46))} className="nav-link">Edit Personal Information</Link></li>
-
+          <li><Link to={"/UserHomePage/userSearch/"+window.location.pathname.substring(23,47)} className="nav-link">Search</Link></li>
+          <li><Link to={"/UserHomePage/reservationList/"+(window.location.pathname.substring(23,47))} className="nav-link">Reservations</Link></li>
+        <li><Link to={"/UserHomePage/editUser/"+(window.location.pathname.substring(23,47))} className="nav-link">Edit Personal Information</Link></li>
+        <li className='signoutPos'><Link to="/" className="nav-link">Sign out</Link></li>
         </ul>
         </div>
        </nav>
 
 
 
-
+          <div className='container'>
 
       <h3>Edit User Information</h3>
       <form onSubmit={this.onSubmit}>
@@ -133,7 +124,7 @@ this.state = {
               className="form-control"
               value={this.state.firstName}
               onChange={this.onChangefirstname}
-              placeholder = {"hi"}
+              
               />
         </div>
         <div className="form-group"> 
@@ -161,13 +152,14 @@ this.state = {
               />
         </div>
         
-       
-       
-
+        <br></br>
+          <Link to={{pathname : '/UserHomePage/ChangePassword/'+ window.location.pathname.substring(23,47) }}><button className='GButton'>Change Password</button></Link>
+          <br></br>
         <div className="form-group">
-          <input type="submit" value="Update user information" className="btn btn-primary" />
+          <input type="submit" value="Update user information" className="btn GButton" />
         </div>
       </form>
+    </div>
     </div>
     
         )

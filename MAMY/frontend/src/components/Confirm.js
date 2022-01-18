@@ -362,26 +362,31 @@ flightPrice2() {
     return (
 
       <div>
-          <div className="container">
+          <div className="">
         <div >
-        <nav className="navbar navbar-dark bg-dark navbar-expand-lg">
+        <nav className="navbar navColor navbar-dark navbar-expand-lg ">
         <Link to={"/UserHomePage/"+ window.location.pathname.substring(22,46)} className="navbar-brand">FSR</Link>
         <div className="collpase navbar-collapse">
         <ul className="navbar-nav mr-auto">
           <li className="navbar-item">
           <Link to={"/UserHomePage/userSearch/"+ window.location.pathname.substring(22,46)}className="nav-link">Search</Link>
           </li>
+          <li><Link to={"/UserHomePage/reservationList/"+(window.location.pathname.substring(22,46))} className="nav-link">Reservations</Link></li>
+        <li><Link to={"/UserHomePage/editUser/"+(window.location.pathname.substring(22,46))} className="nav-link">Edit Personal Information</Link></li>
+        <li className='signoutPos'><Link to="/" className="nav-link">Sign out</Link></li>
         </ul>
         </div>
       </nav>
       </div>
       
+
+      <div className='container'>
         
         <table className="table container">
        
           <thead className="thead-light">
             <tr>
-              <th>Seats</th>
+              <th><h2>Seats</h2></th>
             </tr>
           </thead>
           <tbody>
@@ -472,12 +477,12 @@ flightPrice2() {
         </table>
           
 
-        {<Link to={"/UserHomePage/"+window.location.pathname.substring(22,46)}><button type="button"onClick={() => {this.onSubmit()}} >Confirm</button></Link>}
-        {<Link to={"/UserHomePage/"+window.location.pathname.substring(22,46)}><button type="button"  >Cancel</button></Link>}
+        {<Link to={"/UserHomePage/PayEdit2/"+window.location.pathname.substring(22)+"&$"+this.flightTotalPrice()}><button className='GButton' type="button"onClick={() => {this.onSubmit()}} >Confirm</button></Link>}
+        {<Link to={"/UserHomePage/"+window.location.pathname.substring(22,46)}><button className='GButton' type="button"  >Cancel</button></Link>}
 
       
         </div>
-       
+        </div>
       </div>
     )
 

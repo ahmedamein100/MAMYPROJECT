@@ -58,38 +58,7 @@ export default class search extends Component {
 
   }
 
-  // componentDidMount() {
-    // axios.get('http://localhost:5000/AdminHome/'+ useParams.id)
-    //   .then(response => {
-    //     this.setState({
-    //       From: response.data.From,
-    //       To: response.data.To,
-    //       Date: response.data.Date,
-    //       Arrival: response.data.Arrival,
-    //       Departure: response.data.Departure,
-    //       Economy:response.data.Economy,
-    //       Business: response.data.Business,
-    //       First: response.data.First
-    //     })   
-    //   })
-    //   .catch(function (error) {
-    //     console.log(error);
-    //   })
-      
 
-    // axios.get('http://localhost:5000/users/')
-    //   .then(response => {
-    //     if (response.data.length > 0) {
-    //       this.setState({
-    //         users: response.data.map(user => user.username),
-    //       })
-    //     }
-    //   })
-    //   .catch((error) => {
-    //     console.log(error);
-    //   })
-
-  // }
 
   onChangeFrom(e) {
     this.setState({
@@ -191,8 +160,8 @@ export default class search extends Component {
     return (
       <div>
         
-        <div className="container">
-        <nav className="navbar navbar-dark bg-dark navbar-expand-lg">
+        <div className=" ">
+        <nav className="navbar navColor navbar-dark navbar-expand-lg ">
         <Link to="/AdminHomePage" className="navbar-brand">FSR</Link>
         <div className="collpase navbar-collapse">
         <ul className="navbar-nav mr-auto">
@@ -201,6 +170,7 @@ export default class search extends Component {
           </li>
           <li><Link to="/AdminHomePage/Addflight" className="nav-link">Add Flight</Link></li>
           <li><Link to="/AdminHomePage/search" className="nav-link">Search</Link></li>
+          <li className='signoutPos'><Link to="/" className="nav-link">Sign out</Link></li>          
         </ul>
         </div>
       </nav>
@@ -282,7 +252,7 @@ export default class search extends Component {
         <div>
           {/* <Link to={{pathname : '/AdminHomePage/searchResult' , state:{flights : this.state.flightSearched}}} > */}
           <div className="form-group">
-            <input type="submit" value="Search Flight" className="btn btn-primary" />
+            <input type="submit" value="Search Flight" className="btn GButton" />
           </div>
           {/* </Link> */}
         </div>

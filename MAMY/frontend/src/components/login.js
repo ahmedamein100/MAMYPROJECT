@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import axios from "axios";
 // import { response } from 'express';
+import { Link } from 'react-router-dom';
 export default class Login extends Component {
   constructor(props) {
     super(props);
@@ -46,8 +47,27 @@ export default class Login extends Component {
 
   render() {
     return (
+
       <div>
-        <h3>login</h3>
+
+<div className="LoginNav">
+          
+  <Link to={'/'}><button className='titleNav'>FSR</button></Link>
+          
+          <div >
+            <Link to={{pathname : '/login' }} >
+            <button type="button" className='loginButton2'>Admin Login</button>
+            </Link>
+          </div>
+          <div >
+            <Link to={{pathname : '/userLogin' }} >
+            <button type="button" className='loginButton'>User Login</button>
+            </Link>
+          </div>
+        </div>
+
+      <div className='ContainerAdmin'>
+        <div ><h3 className='centerAdmin'>login</h3></div>
         <form onSubmit={this.onSubmit}>
           <div className="form-group"> 
             <label>Username: </label>
@@ -66,10 +86,11 @@ export default class Login extends Component {
                 />
           </div>
           
-          <div className="form-group">
-            <input type="submit" value="Login" className="btn btn-primary" />
+          <div className="form-group centerAdmin2">
+            <input type="submit" value="Login" className="btn GButton" />
           </div>
         </form>
+      </div>
       </div>
     )
   }

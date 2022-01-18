@@ -10,15 +10,20 @@ export default class AdminHomePage extends Component {
   render() {
     return (
         
-        <div className="container">
+        <div className="LoginNav">
+          
+          <Link to={'/'}><button className='titleNav'>FSR</button></Link>
+          
+          <div >
             <Link to={{pathname : '/login' }} >
-            <button type="button" class="btn btn-dark">Admin Login</button>
+            <button type="button" className='loginButton2'>Admin Login</button>
             </Link>
-
+          </div>
+          <div >
             <Link to={{pathname : '/userLogin' }} >
-            <button type="button" class="btn btn-dark">User Login</button>
+            <button type="button" className='loginButton'>User Login</button>
             </Link>
-
+          </div>
         </div>
     )
   }

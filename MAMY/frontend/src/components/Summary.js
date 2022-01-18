@@ -208,22 +208,34 @@ flightBaggageAllowance2() {
 
 }
 
-  
+getUserSign(){
+  if(window.location.pathname.substring(22,46)=="666666666666666666666666"){
+    return <li className='signoutPos'><Link to="/userLogin" className="nav-link">Sign in</Link></li>;
+
+  }else{
+    return <li className='signoutPos'><Link to="/" className="nav-link">Sign out</Link></li>;
+  }
+}
+
 
   render() {
     return (
 
         <div>
-        <div className="container">
-        <nav className="navbar navbar-dark bg-dark navbar-expand-lg">
+        <div className=" ">
+        <nav className="navbar navColor navbar-dark navbar-expand-lg ">
         <Link to={"/UserHomePage/"+window.location.pathname.substring(22,46)} className="navbar-brand">FSR</Link>
         <div className="collpase navbar-collapse">
         <ul className="navbar-nav mr-auto">
         <li><Link to={"/UserHomePage/userSearch/"+window.location.pathname.substring(22,46)} className="nav-link">Search</Link></li>
+        <li><Link to={"/UserHomePage/reservationList/"+(window.location.pathname.substring(22,46))} className="nav-link">Reservations</Link></li>
+        <li><Link to={"/UserHomePage/editUser/"+(window.location.pathname.substring(22,46))} className="nav-link">Edit Personal Information</Link></li>
+          {/* <li className='signoutPos'><Link to="/" className="nav-link">Sign out</Link></li> */}
+          {this.getUserSign()}
         </ul>
         </div>
       </nav>
-      
+      <div className='container'>
       <h3>Selected Departure Flight</h3>
       <table className="table container">
       
@@ -288,7 +300,9 @@ flightBaggageAllowance2() {
           </tbody>
         </table>
         
-        <Link to ={"/UserHomePage/DepSeats/"+window.location.pathname.substring(22)}> <button>Confirm and view seats</button></Link>
+        <Link to ={"/UserHomePage/DepSeats/"+window.location.pathname.substring(22)}> <button className='GButton'>Confirm and view seats</button></Link>
+      </div>
+
       </div>
       </div>
 

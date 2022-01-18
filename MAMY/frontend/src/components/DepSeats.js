@@ -11,14 +11,14 @@ import Promt from './Promt';
 
 const Seat = props => (
   <tr>
-    <td> <button type="button" onClick={() => { props.choseSeat(props.Element)}} >Seat number {props.Element}</button></td>
+    <td> <button className='GButton' type="button" onClick={() => { props.choseSeat(props.Element)}} >Seat number {props.Element}</button></td>
    
   </tr>
 )
 
 const Seat2 = props => (
     <tr>
-      <td><button type="button"onClick={() => {alert("This seat is already taken") }} >Taken Seat {props.Element}</button></td>
+      <td><button className='GButton' type="button"onClick={() => {alert("This seat is already taken") }} >Taken Seat {props.Element}</button></td>
      
     </tr>
   )
@@ -133,6 +133,7 @@ export default class DepSeats extends Component {
       //  .then(res => console.log(res.data)); 
       //  Flag=true;
       //  this.forceUpdate()
+      window.location="/UserHomePage/DepSeats2/"+window.location.pathname.substring(23)+this.state.str;
        
   
 }
@@ -144,30 +145,33 @@ export default class DepSeats extends Component {
     return (
 
       <div>
-        <div className="container">
-        <nav className="navbar navbar-dark bg-dark navbar-expand-lg">
-        <Link to={"/UserHomePage/"+ window.location.pathname.substring(23,46)} className="navbar-brand">FSR</Link>
+        <div className="">
+        <nav className="navbar navColor navbar-dark navbar-expand-lg ">
+        <Link to={"/UserHomePage/"+ window.location.pathname.substring(23,47)} className="navbar-brand">FSR</Link>
         <div className="collpase navbar-collapse">
         <ul className="navbar-nav mr-auto">
           <li className="navbar-item">
-          <Link to={"/UserHomePage/userSearch/"+ window.location.pathname.substring(23,46)} className="nav-link">Search</Link>
+          <Link to={"/UserHomePage/userSearch/"+ window.location.pathname.substring(23,47)} className="nav-link">Search</Link>
           </li>
+          <li><Link to={"/UserHomePage/reservationList/"+(window.location.pathname.substring(23,47))} className="nav-link">Reservations</Link></li>
+        <li><Link to={"/UserHomePage/editUser/"+(window.location.pathname.substring(23,47))} className="nav-link">Edit Personal Information</Link></li>
+        <li className='signoutPos'><Link to="/" className="nav-link">Sign out</Link></li>
           
         </ul>
         </div>
       </nav>
       </div>
         
-        <table className="table container">
+        <table className="table container Seats">
        
           <thead className="thead-light">
             <tr>
-              <th>Seats</th>
+            <th><h2>Seats</h2></th>
             </tr>
           </thead>
           <tbody>
             { this.seatsList()}
-            {<Link to={"/UserHomePage/DepSeats2/"+window.location.pathname.substring(23)+this.state.str}><button type="button"onClick={() => {this.onSubmit()}} >Continue</button></Link>}
+            <button className='GButton'  type="button"onClick={() => {this.onSubmit()}} >Continue</button>
           </tbody>
         </table>
         

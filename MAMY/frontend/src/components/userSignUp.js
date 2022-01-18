@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
-
+import plane from '../world2.png'; 
 
 export default class userSignUp extends Component {
   constructor(props) {
@@ -57,6 +57,11 @@ export default class userSignUp extends Component {
         PassportNumber: e.target.value
     })
   }
+
+  getImage(){
+
+    return <img src={plane} width={500} height={500} alt="world" />;
+  }
   
   onSubmit(e) {
     e.preventDefault();
@@ -79,10 +84,25 @@ export default class userSignUp extends Component {
   render() {
     return (
       <div>
+        <div className="LoginNav">
+          
+          <Link to={'/'}><button className='titleNav'>FSR</button></Link>
+                  
+                  <div >
+                    <Link to={{pathname : '/login' }} >
+                    <button type="button" className='loginButton2'>Admin Login</button>
+                    </Link>
+                  </div>
+                  <div >
+                    <Link to={{pathname : '/userLogin' }} >
+                    <button type="button" className='loginButton'>User Login</button>
+                    </Link>
+                  </div>
+                </div>
     
 
-    <div className="container">
-      <h3>Create New User</h3>
+    <div className="SignUpBorder">
+      <h3 className='creatNewUserTitle'>Create New User</h3>
       <form onSubmit={this.onSubmit}>
        
         <div className="form-group"> 
@@ -141,10 +161,13 @@ export default class userSignUp extends Component {
         </div>
        
         <div className="form-group">
-          <input type="submit" value="Create User" className="btn btn-primary" />
+          <input type="submit" value="Create User" className="btn btn-primary createUserButton GButton" />
         </div>
       </form>
+      
     </div>
+    {/* <div className='signupImage'>{this.getImage()}</div> */}
+    
     </div>
     )
   }
