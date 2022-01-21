@@ -56,3 +56,28 @@
   first of all one of team member laptop screen is broken (Ahmed Amin Naem) and Other one got new macbook and he still can't deal with it
   and we will try to handle these problems in the upcoming Sprints
   Thank in Advance For Your Understanding .
+
+
+
+
+
+
+
+
+  # Milestone 3
+
+## Geust User Signup
+ A Geust user can sign up ny clickin on the signup link on the navbar which will redirect the user to the form to be completed to proccess the signup and creating a username and password.
+
+## Existing User
+ -A User can sign in from the homepage using the right username and password or the user will get an error.
+ -A User can Change their password after entering the old password.
+ -A user can view a list of all reserved flights and can either change the flights seats or edit the flight (departue or return flights). 
+ -when selecting a flight to edit a user can search for available flights using a search criteria with a result of a list containig all details of flights.After viewing the list a user can select one of the flights to procceed with and pay for any required payments if needed after confirming selecting the flight and choosing the seats according to the cabin class.
+ -After paying the user views an itinerary with all details with the change of the flight and recieves an email automatically including the itinerary.
+ -A user can choose to send an email with the itinerary to himself.
+
+ ## Payment
+  A User can pay for either a reserved flight or any edits needing an added amount of money to complete the edit proccess, then an email will be sent automatically to the user. 
+
+
